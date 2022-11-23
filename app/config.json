@@ -1,0 +1,297 @@
+{
+  "dev": {
+    "service_account": "survey-service-dev@tdp-surveyservice-dev-82581d.iam.gserviceaccount.com",
+    "project_id": "tdp-surveyservice-dev-82581d",
+    "survey_service_endpoint": "https://surveyservice-swmxlytffa-nn.a.run.app",
+    "theme_prediction_endpoint": "https://theme-prediction-vn5tmfo3ea-nn.a.run.app/predictions/",
+    "qualtrics": {
+      "api_endpoint": "https://fra1.qualtrics.com/API/v3",
+      "SV_eEdveUASsSZgfK5": {
+        "name": "Post Interaction Test",
+        "save_to_bigquery": false,
+        "send_to_lionbridge": false,
+        "lionbridge": {
+          "project_id": "6101398b693a0df9fc6554be",
+          "inputs_len": 2,
+          "inputs": [
+            "commentsTransaction",
+            "commentsConsumer",
+            "interactionType"
+          ],
+          "outputs": ["experienceTheme", "tag"]
+        },
+        "slack": {
+          "template": [
+            "*New Feedback {startDate}*",
+            "*Identifiers*",
+            "   uuid: `{evar29}`  ban_type: `{evar37}`  response_id: `{responseId}`",
+            "   pageName: `{pageName}`    region: `{evar1}`",
+            "   user_agent: `{userAgent}`    survey_type: `{surveyType}`",
+            "*Response:*",
+            "   lob: `{lob}`    interactionType: `{interactionType}`",
+            "   ease: `{ease}`    csat: `{csat}`",
+            "   decibel session replay: `{decibelLink}`"
+          ],
+          "comments": {
+            "commentsTransaction": "Tell us how we can make your checkout experience better? ```{commentsTransaction} ```",
+            "commentsConsumer": "Tell us how we can make your experience better? ```{commentsConsumer} ```"
+          },
+          "channel_rules": {
+            "#slack-bot-testing": "True",
+            "#general": "True",
+            "#hello": "True",
+            "#random": "True",
+            "#test": "True"            
+          }
+        }
+      },
+      "SV_9AkALsXMoIhdlhX": {
+        "name": "Exit/Footer",
+        "save_to_bigquery": true,
+        "send_to_lionbridge": true,
+        "theme_prediction": {
+          "field": "comments",
+          "output_name": "experienceTheme"
+        },
+        "lionbridge": {
+          "project_id": "6114e83e48e387f82cd80dc7",
+          "inputs_len": 7,
+          "inputs": [
+            "comments",
+            "feedbackPurpose",
+            "secondary_feedbackpurpose",
+            "experienceTheme",
+            "pageUrl",
+            "lob",
+            "responseId"
+          ],
+          "outputs": ["reasonForFeedback"]
+        },
+        "slack": {
+          "template": [
+            "*New Feedback {startDate}*",
+            "*Identifiers*",
+            "uuid: `{evar29}` ban_type: `{evar37}`",
+            "response_id: `{responseId}` survey_type: `{survey_type}`",
+            "page: `{pageName}` region: `{evar1}`",
+            "user_agent: `{userAgent}`",
+            "*Reason for Feedback*",
+            "feedbackpurpose: `{feedbackPurpose}`",
+            "secondary feedbackpurpose: `{secondary_feedbackpurpose}`",
+            "ease: `{ease}` csat: `{csat}` web_rating: `{web_rating_weightedavg}`",
+            "*Session Replay*",
+            "decibel: `{decibelLink}`"
+          ],
+          "comments": {
+            "comments": "Comment ```{comments} ```"
+          },
+          "channel_rules": {
+            "#slack-bot-testing": "True"
+          }
+        }
+      },
+      "SV_9XKBxbc5rTHGW8Z": {
+        "name": "Search Query Feedback",
+        "save_to_bigquery": false,
+        "send_to_lionbridge": false,
+        "slack": {
+          "template": ["{fields}"],
+          "comments": {
+            "comments": "*Comment* ```{comments} ```"
+          },
+          "channel_rules": {
+            "#slack-bot-testing": "True"
+          }
+        }
+      }
+    },
+    "lionbridge": {
+      "endpoint": "https://ai.lionbridge.com/api/v1",
+      "auth_endpoint": "/oauth/token"
+    },
+    "dlp": {
+      "info_types": [
+        "CREDIT_CARD_NUMBER",
+        "CREDIT_CARD_TRACK_NUMBER",
+        "DATE_OF_BIRTH",
+        "EMAIL_ADDRESS",
+        "PERSON_NAME",
+        "IMEI_HARDWARE_ID",
+        "IP_ADDRESS",
+        "LOCATION",
+        "PHONE_NUMBER",
+        "STREET_ADDRESS",
+        "CANADA_DRIVERS_LICENSE_NUMBER",
+        "CANADA_SOCIAL_INSURANCE_NUMBER",
+        "US_DRIVERS_LICENSE_NUMBER",
+        "US_SOCIAL_SECURITY_NUMBER"
+      ]
+    },
+    "storage": {
+      "survey_service": {
+        "dataset": "survey_service",
+        "tables": {
+          "survey": "survey",
+          "annotated_data": "annotated_data",
+          "id_mapping": "id_mapping"
+        }
+      },
+      "tdp-hoarder": {
+        "project": "tdp-surveyservice-dev-82581d",
+        "dataset": "survey_service",
+        "tables": {
+          "SV_6nGOfmnqJXRoeKW": "SV_eEdveUASsSZgfK5_nlp"
+        }
+      }
+    }
+  },
+  "prod": {
+    "service_account": "survey-service-prod@tdp-surveyservice-prod-cb97e6.iam.gserviceaccount.com",
+    "project_id": "tdp-surveyservice-prod-cb97e6",
+    "survey_service_endpoint": "https://surveyservice-id7insbhca-nn.a.run.app",
+    "theme_prediction_endpoint": "https://theme-prediction-vn5tmfo3ea-nn.a.run.app/predictions/",
+    "qualtrics": {
+      "api_endpoint": "https://fra1.qualtrics.com/API/v3",
+      "SV_eEdveUASsSZgfK5": {
+        "name": "Post Interaction VoC Feedback Survey",
+        "save_to_bigquery": true,
+        "send_to_lionbridge": true,
+        "lionbridge": {
+          "project_id": "613784eb45f7102c60ddf4cd",
+          "inputs_len": 2,
+          "inputs": [
+            "commentsTransaction",
+            "commentsConsumer",
+            "interactionType"
+          ],
+          "outputs": ["experienceTheme", "tag"]
+        },
+        "slack": {
+          "template": [
+            "*New Feedback {startDate}*",
+            "*Identifiers*",
+            "   uuid: `{evar29}`  ban_type: `{evar37}`  response_id: `{responseId}`",
+            "   pageName: `{pageName}`    region: `{evar1}`",
+            "   user_agent: `{userAgent}`    survey_type: `{surveyType}`",
+            "*Response:*",
+            "   lob: `{lob}`    interactionType: `{interactionType}`",
+            "   ease: `{ease}`    csat: `{csat}`",
+            "   decibel session replay: `{decibelLink}`"
+          ],
+          "comments": {
+            "commentsTransaction": "Tell us how we can make your checkout experience better? ```{commentsTransaction} ```",
+            "commentsConsumer": "Tell us how we can make your experience better? ```{commentsConsumer} ```"
+          },
+          "channel_rules": {
+            "#voc-postinteraction": "True",
+            "#voc-mytelus": "survey_body['lob'] == 'My Telus'",
+            "#voc-business": "survey_body['lob'] == 'Business'",
+            "#voc-mobility": "survey_body['lob'] == 'Mobility'",
+            "#voc-homesolutions": "survey_body['lob'] == 'Home Solutions'",
+            "#voc-commerce": "survey_body['interactionType'] == 'transaction'"
+          }
+        }
+      },
+      "SV_9AkALsXMoIhdlhX": {
+        "name": "Exit/Footer",
+        "save_to_bigquery": true,
+        "send_to_lionbridge": true,
+        "theme_prediction": {
+          "field": "comments",
+          "output_name": "experienceTheme"
+        },
+        "lionbridge": {
+          "project_id": "6114e83e48e387f82cd80dc7",
+          "inputs_len": 7,
+          "inputs": [
+            "comments",
+            "feedbackPurpose",
+            "secondary_feedbackpurpose",
+            "experienceTheme",
+            "pageUrl",
+            "lob",
+            "responseId"
+          ],
+          "outputs": []
+        },
+        "slack": {
+          "template": [
+            "*New Feedback {startDate}*",
+            "*Identifiers*",
+            "uuid: `{evar29}` ban_type: `{evar37}`",
+            "response_id: `{responseId}` survey_type: `{survey_type}`",
+            "page: `{pageName}` region: `{evar1}`",
+            "user_agent: `{userAgent}`",
+            "*Reason for Feedback*",
+            "feedbackpurpose: `{feedbackPurpose}`",
+            "secondary feedbackpurpose: `{secondary_feedbackpurpose}`",
+            "ease: `{ease}` csat: `{csat}` web_rating: `{web_rating_weightedavg}`",
+            "*Session Replay*",
+            "decibel: `{decibelLink}`"
+          ],
+          "comments": {
+            "comments": "Comment ```{comments} ```"
+          },
+          "channel_rules": {
+            "#customers": "True",
+            "#voc-mytelus": "survey_body['lob'] == 'My Telus'",
+            "#voc-mytelus-hs": "survey_body['feedbackPurpose'] == 'Managing my existing TELUS service'"
+          }
+        }
+      },
+      "SV_9XKBxbc5rTHGW8Z": {
+        "name": "Search Query Feedback",
+        "save_to_bigquery": false,
+        "send_to_lionbridge": false,
+        "slack": {
+          "template": ["{fields}"],
+          "comments": {
+            "comments": "*Comment* ```{comments} ```"
+          },
+          "channel_rules": {
+            "#voc-search": "True"
+          }
+        }
+      }
+    },
+    "lionbridge": {
+      "endpoint": "https://ai.lionbridge.com/api/v1",
+      "auth_endpoint": "/oauth/token"
+    },
+    "dlp": {
+      "info_types": [
+        "CREDIT_CARD_NUMBER",
+        "CREDIT_CARD_TRACK_NUMBER",
+        "DATE_OF_BIRTH",
+        "EMAIL_ADDRESS",
+        "PERSON_NAME",
+        "IMEI_HARDWARE_ID",
+        "IP_ADDRESS",
+        "LOCATION",
+        "PHONE_NUMBER",
+        "STREET_ADDRESS",
+        "CANADA_DRIVERS_LICENSE_NUMBER",
+        "CANADA_SOCIAL_INSURANCE_NUMBER",
+        "US_DRIVERS_LICENSE_NUMBER",
+        "US_SOCIAL_SECURITY_NUMBER"
+      ]
+    },
+    "storage": {
+      "survey_service": {
+        "dataset": "survey_service",
+        "tables": {
+          "survey": "survey",
+          "annotated_data": "annotated_data",
+          "id_mapping": "id_mapping"
+        }
+      },
+      "tdp-hoarder": {
+        "project": "tdp-hoarder-cb5dd186",
+        "dataset": "qualtrics",
+        "tables": {
+          "SV_eEdveUASsSZgfK5": "SV_eEdveUASsSZgfK5_nlp"
+        }
+      }
+    }
+  }
+}

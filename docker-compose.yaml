@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  surveyservice:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    volumes:
+      - ~/telus/certs/tdp-survey-service-dev.json:/certs/sa.json
+    environment:
+      - ENV=dev
+      - GOOGLE_APPLICATION_CREDENTIALS=/certs/sa.json
+  
