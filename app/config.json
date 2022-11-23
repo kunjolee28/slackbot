@@ -37,7 +37,7 @@
             "commentsConsumer": "Tell us how we can make your experience better? ```{commentsConsumer} ```"
           },
           "channel_rules": {
-            "#general": "true",
+            "#general": "True",
             "#voc-postinteraction": "True",
             "#voc-mytelus": "survey_body['lob'] == 'My Telus'",
             "#voc-business": "survey_body['lob'] == 'Business'",
