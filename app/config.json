@@ -38,9 +38,6 @@
           },
           "channel_rules": {
             "#general": "true",
-            "#hello": "true",
-            "#random": "true",
-            "#test": "true",
             "#voc-postinteraction": "True",
             "#voc-mytelus": "survey_body['lob'] == 'My Telus'",
             "#voc-business": "survey_body['lob'] == 'Business'",
