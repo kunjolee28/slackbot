@@ -37,11 +37,12 @@
             "commentsConsumer": "Tell us how we can make your experience better? ```{commentsConsumer} ```"
           },
           "channel_rules": {
-            "#slack-bot-testing": "True",
-            "#general": "True",
-            "#hello": "True",
-            "#random": "True",
-            "#test": "True"            
+            "#voc-postinteraction": "True",
+            "#voc-mytelus": "survey_body['lob'] == 'My Telus'",
+            "#voc-business": "survey_body['lob'] == 'Business'",
+            "#voc-mobility": "survey_body['lob'] == 'Mobility'",
+            "#voc-homesolutions": "survey_body['lob'] == 'Home Solutions'",
+            "#voc-commerce": "survey_body['interactionType'] == 'transaction'"          
           }
         }
       },
